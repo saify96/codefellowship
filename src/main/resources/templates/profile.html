@@ -1,14 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <div th:insert="fragments :: head"></div>
+    <title>Profile page</title>
 </head>
 <body>
+<header>
+    <h2><span th:text="${user.username}"></span></h2>
+    <div th:if="${userName!=null}" th:insert="fragments :: logout"></div>
+<!--    <div th:if="${userName==null}" ></div>-->
+<!--    <a href="/login">Login</a>-->
+<!--    <form method="Get" action="login">-->
+<!--        <button type="submit">Login</button>-->
+<!--    </form>-->
+</header>
+<main>
+    <img src="http://www.clker.com/cliparts/O/k/n/c/u/6/profile-picture-hi.png" width="80px">
     <p>First Name : <span th:text="${user.firstName}"></span></p>
     <p>Last Name : <span th:text="${user.lastName}"></span></p>
     <p>Bio : <span th:text="${user.bio}"></span></p>
     <p>User Name : <span th:text="${user.username}"></span></p>
     <p>Data Of Birth : <span th:text="${user.dateOfBirth}"></span></p>
+
+    <div>
+        <form method="POST" action="/addpost">
+            <label for="postBody">What's on your mind?</label>
+            <input id="postBody" name="postBody" type="text">
+            <button type="submit">POST</button>
+        </form>
+    </div>
+
+    <h3>User Posts</h3>
+    <div th:each="post: ${user.posts}">
+        <p><span th:text="${post.body}"></span></p>
+        <p><span th:text="${post.createdAt}"></span></p>
+    </div>
+</main>
+
+<footer th:replace="fragments :: footer"></footer>
 </body>
 </html>

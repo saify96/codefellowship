@@ -46,8 +46,19 @@ public class ApplicationUserController {
     @GetMapping("/user/{id}")
     public String  findUser(@PathVariable("id") Integer id, Model m ){
         ApplicationUser user = applicationUserRepository.findById(id).get();
-        m.addAttribute("user",user);
-
-        return"profile.html";
+        if (user != null){
+            m.addAttribute("user",user);
+            return"profile.html";
+        }
+        return "profile.html";
     }
+//    @GetMapping("/error")
+//    public String  findUser(@PathVariable("id") Integer id, Model m ){
+//        ApplicationUser user = applicationUserRepository.findById(id).get();
+//        if (user != null){
+//            m.addAttribute("user",user);
+//            return"profile.html";
+//        }
+//        return "error.html";
+//    }
 }
