@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{home.css}">
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+</head>
+<body>
+<header>
+    <div style="float:right" th:fragment="logout">
+        <form method="Get" action="perform_logout">
+            <button type="submit">Log out</button>
+        </form>
+    </div>
+    <div style="float:right" th:fragment="login">
+        <form method="Get" action="login">
+            <button type="submit">Log in</button>
+        </form>
+    </div><div style="float:right" th:fragment="signup">
+        <form method="Get" action="signup">
+            <button type="submit">signup</button>
+        </form>
+    </div>
+</header>
+<footer th:fragment="footer" id="index-footer">
+    <div id="copyrights">
+        <p>
+            Copyright &copy; 2021 All Rights Reserved
+        </p>
+    </div>
+    <div id="icons">
+        <ul class="social-icons">
+            <li><a target="_blank" class="facebook" href="https://facebook.com/"><i class="fa fa-facebook"></i></a></li>
+            <li><a target="_blank" class="twitter" href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+            <li><a target="_blank" class="youtube" href="https://www.youtube.com/"><i class="fa fa-youtube"></i></a>
+            </li>
+            <li><a target="_blank" class="linkedin" href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a>
+            </li>
+        </ul>
+    </div>
+</footer>
+</body>
+</html>
