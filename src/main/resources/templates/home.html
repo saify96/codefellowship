@@ -9,6 +9,8 @@
 </head>
 <body>
 <header>
+    <a href="/profile">Profile</a>
+    <a href="/feed">Feed</a>
     <h2 ><span th:text="${userName}"></span></h2>
     <div th:if="${userName!=null}" th:insert="fragments :: logout"></div>
     <div th:if="${userName==null}" th:insert="fragments :: login"></div>

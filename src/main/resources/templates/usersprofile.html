@@ -8,12 +8,7 @@
 <header>
     <h2><span th:text="${user.username}"></span></h2>
     <div th:if="${userName!=null}" th:insert="fragments :: logout"></div>
-<!--    <div th:if="${msg!=null}" th:text="kamsdlkamfelnflka"></div>-->
-<!--    <div th:if="${userName==null}" ></div>-->
-<!--    <a href="/login">Login</a>-->
-<!--    <form method="Get" action="login">-->
-<!--        <button type="submit">Login</button>-->
-<!--    </form>-->
+    <div th:if="${msg!=null}" th:text="kamsdlkamfelnflka"></div>
 </header>
 <main>
     <img src="http://www.clker.com/cliparts/O/k/n/c/u/6/profile-picture-hi.png" width="80px">
@@ -23,23 +18,15 @@
     <p>User Name : <span th:text="${user.username}"></span></p>
     <p>Data Of Birth : <span th:text="${user.dateOfBirth}"></span></p>
 
-    <div>
-        <form method="POST" action="/addpost">
-            <label for="postBody">What's on your mind?</label>
-            <input id="postBody" name="postBody" type="text">
-            <button type="submit">POST</button>
-        </form>
-    </div>
-
-<!--    <form method="post" th:action="@{/follow/{id}(id=${user.id})}">-->
-<!--        <button type="submit">Follow</button>-->
-<!--    </form>-->
+    <form method="post" th:action="@{/follow/{id}(id=${user.id})}">
+        <button type="submit">Follow</button>
+    </form>
 
     <!--    <div>-->
-<!--        <form method="Post" action="/follow">-->
-<!--            <button type="submit">follow</button>-->
-<!--        </form>-->
-<!--    </div>-->
+    <!--        <form method="Post" action="/follow">-->
+    <!--            <button type="submit">follow</button>-->
+    <!--        </form>-->
+    <!--    </div>-->
 
     <h3>User Posts</h3>
     <div th:each="post: ${user.posts}">
