@@ -5,6 +5,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class ApplicationUser implements UserDetails {
@@ -19,7 +20,6 @@ public class ApplicationUser implements UserDetails {
     private String lastName;
     private String dateOfBirth;
     private String bio;
-
     ////
     @OneToMany(mappedBy = "user")
     private List<Post> posts;
@@ -32,6 +32,31 @@ public class ApplicationUser implements UserDetails {
         this.posts = posts;
     }
     ////
+
+    ///many2many
+
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(name = "following_users",
+            joinColumns ={@JoinColumn(name = "user_id")} ,// this entity
+            inverseJoinColumns = {@JoinColumn(name = "followedUser_id")})// another side , to what iam point
+    private Set<ApplicationUser> followedUsers;/// name of the class
+
+    public void addFollowing(ApplicationUser user){
+        followedUsers.add(user);
+    }
+
+    @ManyToMany(mappedBy = "followedUsers")
+    private Set<ApplicationUser> followers; // cuz we are in the same entitiy <same class>
+
+    public Set<ApplicationUser> getFollowedUsers() {
+        return followedUsers;
+    }
+
+    public Set<ApplicationUser> getFollowers() {
+        return followers;
+    }
+///
+
     public ApplicationUser(){}
 
     public ApplicationUser(String username, String password, String firstName, String lastName, String dateOfBirth, String bio) {

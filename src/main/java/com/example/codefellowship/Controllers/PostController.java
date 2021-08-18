@@ -22,21 +22,11 @@ public class PostController {
     @Autowired
     ApplicationUserRepository applicationUserRepository;
 
-
 //    @GetMapping("/posts")
 //    public String getSong(Model model) {
 //        model.addAttribute("posts",postRepository.findAll());
 //        return "profile.html";
 //    }
-
-
-//    @PostMapping("/addsong")
-//    public RedirectView addSong(@RequestParam(value = "body") String body,
-//                                @RequestParam(value = "createdAt") Date createdAt) {
-//        Post newPost = new Post(body,createdAt);
-//        applicationUserRepository.save(newPost);
-//        return new RedirectView("/login");
-//    }   String body , Date createdAt , int id
 
     @PostMapping("/addpost")
     public RedirectView addpost(Principal p ,String postBody) {
